@@ -109,14 +109,16 @@ export default function FormularioContacto() {
     setDescription(contacto.descripcion);
 
   }
+
   const handleDelete = async (id:number) => {
     if (confirm('¿Estás seguro de que deseas eliminar este usuario?')) {
         try {
             const res = await fetch(`${process.env.NEXT_PUBLIC_API_URL}/contacto/${id}`, {
-                method: 'DELETE',
+                method: 'DELETE'
             });
             if (res.ok) {
                 cargarContactos()
+                alert('Usuario Eliminado correctamente');
             } else {
                 alert('Error al eliminar usuario');
             }
